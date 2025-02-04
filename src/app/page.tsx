@@ -13,7 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false); // New state to check if component is mounted
-  const API_KEY = "52570f23007c4ebe3423a7e78274b001"; // Replace with your OpenWeatherMap API key
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const fetchWeather = async (city: string) => {
     setLoading(true);
