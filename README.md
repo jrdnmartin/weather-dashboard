@@ -67,4 +67,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 For any questions or feedback, please reach out:
 - **Email**: jordan.martin@drake.edu
-- **GitHub**: [Your GitHub Profile](https://github.com/jrdnmartin)
+- **GitHub**: [GitHub Profile](https://github.com/jrdnmartin)
