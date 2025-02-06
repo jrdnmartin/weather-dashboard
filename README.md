@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌤️ Weather Dashboard
 
-## Getting Started
+The **Weather Dashboard** is a modern, user-friendly web application that allows users to gather and display real-time weather information for any city around the globe. Leveraging the **OpenWeather API**, this application provides accurate current weather details and a 5-day forecast in a visually appealing and interactive interface.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📋 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Search for Weather by City**: Enter the name of a city to fetch weather details instantly.
+- **Current Weather Conditions**:
+  - Temperature (°C/°F)
+  - Weather description (e.g., "Cloudy")
+  - Humidity levels (%)
+  - Wind speed
+  - Feels-like temperature
+  - Weather icon for quick visualization
+- **5-Day Weather Forecast IN PROGRESS**:
+  - Daily high/low temperatures
+  - Weather conditions
+  - Precipitation chance
+- **Dynamic Background IN PROGRESS**: The background changes based on the current weather condition (e.g., sunny, rainy, snowy).
+- **Unit Toggle**: Switch between Celsius (°C) and Fahrenheit (°F) for temperature readings.
+- **Responsive Design**: Optimized for viewing on desktops, tablets, and mobile devices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Technologies Used
 
-## Learn More
+- **Frontend**: 
+  - [React](https://reactjs.org/)
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [Tailwind CSS](https://tailwindcss.com/) for modern, responsive UI styling
+- **Backend/API**:
+  - [OpenWeatherMap API](https://openweathermap.org/) for real-time weather data
+- **Development Tools**:
+  - [Vite](https://vitejs.dev/) for a fast development environment
+  - [Axios](https://axios-http.com/) for HTTP requests
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🗺️ Future Enhancements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Dynamic Background** - Background will change based on current weather conditions
+- **5 Day Weather Forecasts**: Add a detailed weekly forecast section.
+- **Severe Weather Alerts**: Display real-time weather alerts and notifications.
+- **Saved Locations (?)**: Allow users to save favorite cities for quick access.
+- **Weather-Based Recommendations**: Suggest activities or outfits based on weather conditions.
+- **Radar Map (?)**: Integrate an interactive map for visualizing weather patterns.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🌟 Acknowledgments
+
+- [OpenWeatherMap API](https://openweathermap.org/) for providing real-time weather data.
+- [Tailwind CSS](https://tailwindcss.com/) for beautiful and responsive UI styling.
+- [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/) for building the application.
+
+---
+
+## 📬 Contact
+
+For any questions or feedback, please reach out:
+- **Email**: jordan.martin@drake.edu
+- **GitHub**: [GitHub Profile](https://github.com/jrdnmartin)
