@@ -5,7 +5,15 @@ const SearchBar = ({ onSearch }) => {
   const [city, setCity] = useState('');
 
   const handleSearch = () => {
-    onSearch(city);
+    if (city.trim() !== '') {
+      onSearch(city);
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   return (
@@ -15,6 +23,7 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        onKeyPress={handleKeyPress} // Add onKeyPress event handler
         placeholder="Enter city..."
       />
       <button 

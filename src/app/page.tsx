@@ -4,11 +4,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
+import ForecastCard from './components/ForecastCard';
 import Dropdown from './components/Dropdown';
 
+export const convertTemperature = (temp: number, unit: string) => {
+  if (unit === 'imperial') {
+    return (temp * 9/5) + 32; // Convert Celsius to Fahrenheit
+  } else if (unit === 'default') {
+    return temp + 273.15; // Convert Celsius to Kelvin
+  }
+  return temp; // Default is Celsius
+};
+
 export default function Home() {
-  const [weather, setWeather] = useState<{ name: string; main: { temp: number; humidity: number; feels_like: number }; weather: { description: string; icon: string }[]; wind: { speed: number } } | null>(null);
-  const [city, setCity] = useState("London"); // Default city
+  const [weather, setWeather] = useState<{ name: string; main: { temp: number; humidity: number; feels_like: number }; weather: { id: number; description: string; icon: string }[]; wind: { speed: number }; sys: { sunrise: number; sunset: number; timezone: number } } | null>(null);
+  const [forecast, setForecast] = useState<any[]>([]); // State for forecast data
+  const [city, setCity] = useState(""); // Initialize city to an empty string
   const [unit, setUnit] = useState("metric"); // Default unit
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,15 +27,23 @@ export default function Home() {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const fetchWeather = async (city: string) => {
+    if (!city) return; // Do not fetch weather if city is empty
+
     setLoading(true);
     setError(null); // Reset error state before fetching
 
     try {
-      const response = await axios.get(
+      const weatherResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
-      setWeather(response.data);
+      setWeather(weatherResponse.data);
+
+      const forecastResponse = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+      );
+      setForecast(forecastResponse.data.list.filter((item: any, index: number) => index % 8 === 0)); // Filter to get daily forecast
     } catch (error) {
+      console.error("Error fetching weather data:", error);
       setError("City not found or API error.");
     } finally {
       setLoading(false);
@@ -33,17 +52,10 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true); // Set isMounted to true when component mounts
-    fetchWeather(city); // Fetch weather when the city is changed
-  }, [city]);
-
-  const convertTemperature = (temp: number, unit: string) => {
-    if (unit === 'imperial') {
-      return (temp * 9/5) + 32; // Convert Celsius to Fahrenheit
-    } else if (unit === 'default') {
-      return temp + 273.15; // Convert Celsius to Kelvin
+    if (city) {
+      fetchWeather(city); // Fetch weather only if city is provided
     }
-    return temp; // Default is Celsius
-  };
+  }, [city]);
 
   if (!isMounted) {
     return null; // Render nothing on the server
@@ -67,18 +79,24 @@ export default function Home() {
         ) : error ? (
           <p className="text-lg text-red-500 text-center">{error}</p>
         ) : weather ? (
-          <div className="flex justify-center w-full"> {/* Center the WeatherCard */}
-            <WeatherCard 
-              city={weather.name} 
-              temperature={convertTemperature(weather.main.temp, unit)} 
-              description={weather.weather[0].description}
-              windspd={weather.wind.speed}
-              icon={weather.weather[0].icon}
-              unit={unit}
-              humidity={weather.main.humidity} 
-              feelsLike={convertTemperature(weather.main.feels_like, unit)}
-            />
-          </div>
+          <>
+            <div className="flex justify-center w-full"> {/* Center the WeatherCard */}
+              <WeatherCard 
+                city={weather.name} 
+                temperature={convertTemperature(weather.main.temp, unit)} 
+                description={weather.weather[0].description}
+                windspd={weather.wind.speed}
+                icon={weather.weather[0].icon}
+                unit={unit}
+                humidity={weather.main.humidity} 
+                feelsLike={convertTemperature(weather.main.feels_like, unit)}
+                weatherId={weather.weather[0].id} // Pass the weather condition ID
+              />
+            </div>
+            <div className="flex justify-center w-full mt-8"> {/* Center the ForecastCard */}
+              <ForecastCard forecast={forecast} unit={unit} />
+            </div>
+          </>
         ) : (
           <p className="text-lg text-center">Enter a city to get the weather information.</p>
         )}
