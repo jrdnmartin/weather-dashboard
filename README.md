@@ -14,12 +14,11 @@ The **Weather Dashboard** is a modern, user-friendly web application that allows
   - Wind speed
   - Feels-like temperature
   - Weather icon for quick visualization
-- **5-Day Weather Forecast IN PROGRESS**:
-  - Daily high/low temperatures
+- **5-Day Weather Forecast**:
+  - Daily temperatures
   - Weather conditions
-  - Precipitation chance
-- **Dynamic Background IN PROGRESS**: The background changes based on the current weather condition (e.g., sunny, rainy, snowy).
-- **Unit Toggle**: Switch between Celsius (°C) and Fahrenheit (°F) for temperature readings.
+- **Dynamic Background**: The background changes based on the current weather condition (e.g., sunny, rainy, snowy).
+- **Unit Toggle**: Switch between Celsius (°C), Kelvin (°K), and Fahrenheit (°F) for temperature readings.
 - **Responsive Design**: Optimized for viewing on desktops, tablets, and mobile devices.
 
 ---
@@ -38,14 +37,35 @@ The **Weather Dashboard** is a modern, user-friendly web application that allows
 
 ---
 
-## 🗺️ Future Enhancements
+## 🛠️ Setup
 
-- **Dynamic Background** - Background will change based on current weather conditions
-- **5 Day Weather Forecasts**: Add a detailed weekly forecast section.
-- **Severe Weather Alerts**: Display real-time weather alerts and notifications.
-- **Saved Locations (?)**: Allow users to save favorite cities for quick access.
-- **Weather-Based Recommendations**: Suggest activities or outfits based on weather conditions.
-- **Radar Map (?)**: Integrate an interactive map for visualizing weather patterns.
+To set up the project locally, follow these steps:
+
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/jrdnmartin/weather-dashboard.git
+   cd weather-dashboard
+   ```
+
+2. **Install dependencies**:
+   ```sh
+   npm install
+   ```
+
+3. **Create a .env file in the root directory and add your OpenWeatherMap API key**:
+    ```sh
+    NEXT_PUBLIC_API_KEY=your_api_key_here
+    ```
+
+4. **Run the development server**:
+    ```sh
+    npm run dev
+    ```
+
+5. **Open your browser and navigate to**:
+    ```sh
+    http://localhost:3000
+    ```
 
 ---
 
