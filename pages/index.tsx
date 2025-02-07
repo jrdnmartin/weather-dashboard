@@ -7,6 +7,8 @@ import WeatherCard from '../src/app/components/WeatherCard';
 import ForecastCard from '../src/app/components/ForecastCard';
 import Dropdown from '../src/app/components/Dropdown';
 import { convertTemperature } from '../src/app/utils';
+import 'tailwindcss/tailwind.css'; // Import Tailwind styles into index.tsx
+
 
 export default function Home() {
   const [weather, setWeather] = useState<{ name: string; main: { temp: number; humidity: number; feels_like: number }; weather: { id: number; description: string; icon: string }[]; wind: { speed: number }; sys: { sunrise: number; sunset: number; timezone: number } } | null>(null);

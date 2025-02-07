@@ -1,5 +1,5 @@
 import React from "react";
-import { someUtility } from '../utils';
+import { convertTemperature } from '../utils';
 
 const ForecastCard = ({ forecast, unit }) => {
   const unitSymbol = unit === 'metric' ? '°C' : unit === 'imperial' ? '°F' : '°K';
