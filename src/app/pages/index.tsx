@@ -2,19 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SearchBar from './components/SearchBar';
-import WeatherCard from './components/WeatherCard';
-import ForecastCard from './components/ForecastCard';
-import Dropdown from './components/Dropdown';
-
-export const convertTemperature = (temp: number, unit: string) => {
-  if (unit === 'imperial') {
-    return (temp * 9/5) + 32; // Convert Celsius to Fahrenheit
-  } else if (unit === 'default') {
-    return temp + 273.15; // Convert Celsius to Kelvin
-  }
-  return temp; // Default is Celsius
-};
+import SearchBar from '../components/SearchBar';
+import WeatherCard from '../components/WeatherCard';
+import ForecastCard from '../components/ForecastCard';
+import Dropdown from '../components/Dropdown';
+import { convertTemperature } from '../utils';
 
 export default function Home() {
   const [weather, setWeather] = useState<{ name: string; main: { temp: number; humidity: number; feels_like: number }; weather: { id: number; description: string; icon: string }[]; wind: { speed: number }; sys: { sunrise: number; sunset: number; timezone: number } } | null>(null);
