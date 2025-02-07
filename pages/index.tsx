@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SearchBar from '../components/SearchBar';
-import WeatherCard from '../components/WeatherCard';
-import ForecastCard from '../components/ForecastCard';
-import Dropdown from '../components/Dropdown';
-import { convertTemperature } from '../utils';
+import SearchBar from '../src/app/components/SearchBar';
+import WeatherCard from '../src/app/components/WeatherCard';
+import ForecastCard from '../src/app/components/ForecastCard';
+import Dropdown from '../src/app/components/Dropdown';
+import { convertTemperature } from '../src/app/utils';
 
 export default function Home() {
   const [weather, setWeather] = useState<{ name: string; main: { temp: number; humidity: number; feels_like: number }; weather: { id: number; description: string; icon: string }[]; wind: { speed: number }; sys: { sunrise: number; sunset: number; timezone: number } } | null>(null);
